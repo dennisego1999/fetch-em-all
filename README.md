@@ -20,16 +20,40 @@ src/
     └── PokemonService.ts
 ```
 
-The app follows a `Service → Repository → Client` chain. Each layer has one responsibility.
+The app follows a `Service → Repository → Client` chain. Each layer has one responsibility and only talks to the layer directly below it through a contract.
 
-- **IHttpClient** — contract any HTTP client must implement, makes the client layer swappable
-- **IRepository** — generic contract any repository must implement, generic `T` defines the return type
-- **IPokemonRepository** — extends `IRepository<PokemonDTO>` with Pokémon-specific methods like `findByName`
-- **HttpClient** — generic base class for HTTP requests, not tied to any specific API
-- **PokemonClient** — extends `HttpClient`, provides the PokéAPI base URL
-- **PokemonRepository** — fetches Pokémon-specific data, owns the endpoints. The only place that changes if an endpoint changes
-- **PokemonDTO** — validates and maps the raw API response, acts as the boundary of trust between the API and the app
-- **PokemonService** — consumes the repository and applies business logic
+This means:
+
+- Swap `fetch` for `axios`? Only `HttpClient` changes
+- Backend URL or endpoint changes? Only the `Repository` changes
+- Business logic changes? Only the `Service` changes
+- Components only ever call the `Service` — they have no knowledge of HTTP, endpoints or data mapping
+
+The contracts (`IHttpClient`, `IRepository<T>`) know nothing about Pokemon — they work for any API you add in the future.
+
+- **HttpClient** — does HTTP requests
+  _Generic base class, no knowledge of any specific API or URL_
+
+- **PokemonClient** — configures the PokéAPI connection
+  _Extends `HttpClient` with the PokéAPI base URL_
+
+- **PokemonRepository** — fetches Pokémon data
+  _Owns the endpoints — the only place that changes if an endpoint changes_
+
+- **PokemonDTO** — validates and maps the raw API response
+  _Acts as the boundary of trust between the API and the app_
+
+- **PokemonService** — applies business logic
+  _The only layer components ever interact with_
+
+- **IHttpClient** — contract any HTTP client must implement
+  _Makes the client layer swappable_
+
+- **IRepository\<T\>** — contract any repository must implement
+  _Generic `T` defines the return type, works for any domain_
+
+- **IPokemonRepository** — contract for the Pokémon repository
+  _Extends `IRepository<PokemonDTO>` with Pokémon-specific methods_
 
 ## Requirements
 
