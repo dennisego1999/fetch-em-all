@@ -29,7 +29,7 @@ The app follows a `Service → Repository → Client` chain. Each layer has one 
 - **PokemonClient** — extends `HttpClient`, provides the PokéAPI base URL
 - **PokemonRepository** — fetches Pokémon-specific data, owns the endpoints. The only place that changes if an endpoint changes
 - **PokemonDTO** — validates and maps the raw API response, acts as the boundary of trust between the API and the app
-- **PokemonService** — does repository calls and applies business logic. Never fetches directly
+- **PokemonService** — consumes the repository and applies business logic
 
 ## Requirements
 
