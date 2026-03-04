@@ -2,6 +2,8 @@
 
 A Vue app which consumes the [PokéAPI](https://pokeapi.co/).
 
+---
+
 ## Architecture
 
 ```
@@ -31,29 +33,27 @@ This means:
 
 The contracts (`IHttpClient`, `IRepository<T>`) know nothing about Pokemon — they work for any API you add in the future.
 
-- **HttpClient** — does HTTP requests
-  _Generic base class, no knowledge of any specific API or URL_
+---
 
-- **PokemonClient** — configures the PokéAPI connection
-  _Extends `HttpClient` with the PokéAPI base URL_
+### Classes
 
-- **PokemonRepository** — fetches Pokémon data
-  _Owns the endpoints — the only place that changes if an endpoint changes_
+| Class               | Responsibility                          | Notes                                                     |
+| ------------------- | --------------------------------------- | --------------------------------------------------------- |
+| `HttpClient`        | Does HTTP requests                      | No knowledge of any specific API or URL                   |
+| `PokemonClient`     | Configures the PokéAPI connection       | Extends `HttpClient` with the PokéAPI base URL            |
+| `PokemonRepository` | Fetches Pokémon data                    | The only place that changes if an endpoint changes        |
+| `PokemonDTO`        | Validates and maps the raw API response | Acts as the boundary of trust between the API and the app |
+| `PokemonService`    | Applies business logic                  | The only layer components ever interact with              |
 
-- **PokemonDTO** — validates and maps the raw API response
-  _Acts as the boundary of trust between the API and the app_
+### Contracts
 
-- **PokemonService** — applies business logic
-  _The only layer components ever interact with_
+| Contract             | Responsibility                          |
+| -------------------- | --------------------------------------- |
+| `IHttpClient`        | Contract any HTTP client must implement |
+| `IRepository<T>`     | Contract any repository must implement  |
+| `IPokemonRepository` | Contract for the Pokémon repository     |
 
-- **IHttpClient** — contract any HTTP client must implement
-  _Makes the client layer swappable_
-
-- **IRepository\<T\>** — contract any repository must implement
-  _Generic `T` defines the return type, works for any domain_
-
-- **IPokemonRepository** — contract for the Pokémon repository
-  _Extends `IRepository<PokemonDTO>` with Pokémon-specific methods_
+---
 
 ## Requirements
 
@@ -62,6 +62,8 @@ Ensure you are using the correct Node.js version by running the following comman
 ```sh
 nvm use
 ```
+
+---
 
 ## Project Setup
 
