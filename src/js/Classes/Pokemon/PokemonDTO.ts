@@ -1,4 +1,4 @@
-import InvalidPokemonError from "@/js/Classes/Errors/InvalidPokemonError";
+import InvalidPokemonError from "@/js/Classes/Pokemon/InvalidPokemonError";
 import type IPokemon from "@/js/Classes/Pokemon/IPokemon";
 
 export default class PokemonDTO {

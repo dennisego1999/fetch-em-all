@@ -17,8 +17,8 @@ src/
         │   └── IRepository.ts
         ├── Errors/
         │   ├── HttpError.ts
-        │   └── InvalidPokemonError.ts
         └── Pokemon/
+            ├── InvalidPokemonError.ts
             ├── IPokemon.ts
             ├── IPokemonRepository.ts
             ├── PokemonClient.ts

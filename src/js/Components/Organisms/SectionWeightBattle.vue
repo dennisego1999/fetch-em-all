@@ -3,7 +3,7 @@ import { onMounted, ref, type Ref } from "vue";
 import type PokemonDTO from "@/js/Classes/Pokemon/PokemonDTO";
 import PokemonService from "@/js/Classes/Pokemon/PokemonService";
 import HttpError from "@/js/Classes/Errors/HttpError";
-import InvalidPokemonError from "@/js/Classes/Errors/InvalidPokemonError";
+import InvalidPokemonError from "@/js/Classes/Pokemon/InvalidPokemonError";
 import Section from "@/js/Components/Fundaments/Section/Section.vue";
 import Text from "@/js/Components/Atoms/Text/Text.vue";
 import Heading from "@/js/Components/Atoms/Heading/Heading.vue";
