@@ -7,6 +7,7 @@ import InvalidPokemonError from "@/js/Classes/Pokemon/InvalidPokemonError";
 import Section from "@/js/Components/Fundaments/Section/Section.vue";
 import Text from "@/js/Components/Atoms/Text/Text.vue";
 import Heading from "@/js/Components/Atoms/Heading/Heading.vue";
+import PokemonCard from "../../Molecules/PokemonCard/PokemonCard.vue";
 
 const pokemonA: Ref<PokemonDTO | null> = ref(null);
 const pokemonB: Ref<PokemonDTO | null> = ref(null);
@@ -30,16 +31,34 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Section>
-    <Heading>Weight Battle</Heading>
+  <Section
+    class="section-weight-battle"
+    theme="dark"
+    padding="both"
+    gutter="both"
+    align="center"
+    :background="true"
+  >
+    <Heading>Weight battle</Heading>
 
     <Text v-if="error">{{ error }}</Text>
 
-    <template v-else-if="pokemonA && pokemonB">
-      <Text>{{ pokemonA.name }} ({{ pokemonA.weight }}kg)</Text>
-      <Text>{{ pokemonB.name }} ({{ pokemonB.weight }}kg)</Text>
+    <Section class="section-weight-battle__inner" align="center">
+      <Section
+        v-if="pokemonA && pokemonB"
+        class="section-weight-battle__cards"
+        flex-direction="row"
+        justify="center"
+        padding="both"
+        gap="tiny"
+        wrap="wrap"
+        :size="6"
+      >
+        <PokemonCard :pokemon="pokemonA" />
+        <PokemonCard :pokemon="pokemonB" />
+      </Section>
 
       <Text v-if="weightComparison" variant="strong">{{ weightComparison }}</Text>
-    </template>
+    </Section>
   </Section>
 </template>

@@ -2,7 +2,7 @@
 
 @layer atoms {
   :root {
-    --text-font: "Roboto", sans-serif;
+    --text-font: "DM Mono", monospace;
     --text-font-size-base: #{sass.fluid(16px, 20px)};
     --text-font-size: var(--text-font-size-base);
     --text-font-weight: inherit;
@@ -14,6 +14,9 @@
     --text-font-size-2: calc(var(--text-font-size-base) / var(--text-font-size-scale-text));
     --text-font-size-3: calc(var(--text-font-size-2) / var(--text-font-size-scale-text));
     --text-font-size-4: calc(var(--text-font-size-3) / var(--text-font-size-scale-text));
+    --text-font-size-5: calc(var(--text-font-size-4) / var(--text-font-size-scale-text));
+    --text-font-size-6: calc(var(--text-font-size-5) / var(--text-font-size-scale-text));
+    --text-font-size-7: calc(var(--text-font-size-6) / var(--text-font-size-scale-text));
   }
 
   body {
@@ -137,7 +140,7 @@
     --text-font-size: inherit;
   }
 
-  @for $i from 0 to 5 {
+  @for $i from 0 to 8 {
     [data-font-size="#{$i}"] {
       --text-font-size: var(--text-font-size-#{$i});
     }

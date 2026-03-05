@@ -1,31 +1,73 @@
 @layer fundaments {
-	:root {
-		--color-neutral-white: #fff;
-		--color-neutral-050: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 95%);
-		--color-neutral-100: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 90%);
-		--color-neutral-200: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 80%);
-		--color-neutral-300: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 70%);
-		--color-neutral-400: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 60%);
-		--color-neutral-500: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 50%);
-		--color-neutral-600: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 40%);
-		--color-neutral-700: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 30%);
-		--color-neutral-800: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 20%);
-		--color-neutral-900: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 10%);
-		--color-neutral-950: color-mix(in srgb, var(--color-neutral-black), var(--color-neutral-white) 5%);
-		--color-neutral-black: #000;
+  :root {
+    --color-neutral-white: #fff;
+    --color-neutral-050: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 95%
+    );
+    --color-neutral-100: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 90%
+    );
+    --color-neutral-200: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 80%
+    );
+    --color-neutral-300: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 70%
+    );
+    --color-neutral-400: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 60%
+    );
+    --color-neutral-500: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 50%
+    );
+    --color-neutral-600: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 40%
+    );
+    --color-neutral-700: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 30%
+    );
+    --color-neutral-800: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 20%
+    );
+    --color-neutral-900: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 10%
+    );
+    --color-neutral-950: color-mix(
+      in srgb,
+      var(--color-neutral-black),
+      var(--color-neutral-white) 5%
+    );
+    --color-neutral-black: #000;
 
-		--color-neutral-grey-light: #F7F9FC;
-		--color-neutral-grey: #CBD2D9;
-		--color-neutral-grey-dark: #687483;
+    --color-neutral-grey-light: #f7f9fc;
+    --color-neutral-grey: #cbd2d9;
+    --color-neutral-grey-dark: #687483;
 
-		--color-brand-dark: #333332;
-		--color-brand-light: #FFED00;
+    --color-brand-light-blue: #2a75bb;
+    --color-brand-dark-blue: #3c5aa6;
+    --color-brand-yellow: #ffcb05;
 
-		--color-brand-accent-light: #5990DE;
-		--color-brand-accent-dark: #0055CC;
-
-		--color-indication-valid: green;
-		--color-indication-warning: orange;
-		--color-indication-invalid: red;
-	}
+    --color-indication-valid: green;
+    --color-indication-warning: orange;
+    --color-indication-invalid: red;
+  }
 }

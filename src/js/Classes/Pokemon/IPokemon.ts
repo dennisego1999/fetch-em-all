@@ -3,4 +3,7 @@ export default interface IPokemon {
   name: string;
   height: number;
   weight: number;
+  sprites: {
+    front_default: string | null;
+  };
 }

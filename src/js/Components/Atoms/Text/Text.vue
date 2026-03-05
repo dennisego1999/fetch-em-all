@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useAttrs } from "vue";
 
-const props = defineProps({
+defineProps({
   tag: { type: String, default: "div" },
   fontSize: { type: String, default: "inherit" },
   textAlign: { type: String, default: null },
@@ -19,18 +19,18 @@ const { class: _, ...filteredAttrs } = attrs as Record<string, unknown>;
 
 <template>
   <component
-    :is="props.tag"
+    :is="tag"
     class="text"
     v-bind="{
       ...filteredAttrs,
-      'data-font-size': props.fontSize,
-      'data-text-align': props.textAlign,
-      'data-force-align': props.forceAlign,
-      'data-cap': props.cap,
-      'data-clamp': props.clamp,
-      'data-flow': props.flow,
-      'data-variant': props.variant,
-      'data-wrap': props.wrap,
+      'data-font-size': fontSize,
+      'data-text-align': textAlign,
+      'data-force-align': forceAlign,
+      'data-cap': cap,
+      'data-clamp': clamp,
+      'data-flow': flow,
+      'data-variant': variant,
+      'data-wrap': wrap,
     }"
     ><slot
   /></component>

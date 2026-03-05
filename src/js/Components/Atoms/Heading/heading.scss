@@ -2,7 +2,7 @@
 
 @layer atoms {
   :root {
-    --heading-font: "Roboto", sans-serif;
+    --heading-font: "Unbounded", sans-serif;
     --heading-font-size-base: #{sass.fluid(16px, 28px)};
     --heading-font-size: inherit;
     --heading-font-weight: 500;

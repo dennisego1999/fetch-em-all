@@ -1,8 +1,10 @@
 @layer subtheme {
-	[data-theme='light-tint'] {
-		--color-theme: light-tint;
+  [data-theme="light-tint"] {
+    --color-theme: light-tint;
 
-		--color-background: var(--color-neutral-grey-light);
-		--color-background-tint: var(--color-neutral-white);
-	}
+    --color-background: var(--color-brand-yellow);
+    --color-background-tint: var(--color-brand-yellow);
+    --color-heading: var(--color-brand-light-blue);
+    --color-text: var(--color-neutral-white);
+  }
 }

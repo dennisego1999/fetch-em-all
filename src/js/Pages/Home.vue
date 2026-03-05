@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SectionWeightBattle from "../Components/Organisms/SectionWeightBattle.vue";
+import SectionWeightBattle from "@/js/Components/Organisms/SectionWeightBattle/SectionWeightBattle.vue";
 </script>
 
 <template>

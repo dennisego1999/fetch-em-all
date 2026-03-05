@@ -7,6 +7,7 @@ export default class PokemonDTO {
     public readonly name: string,
     public readonly height: number,
     public readonly weight: number,
+    public readonly frontSprite: string | null,
   ) {
     //
   }
@@ -16,7 +17,7 @@ export default class PokemonDTO {
       throw new InvalidPokemonError();
     }
 
-    return new PokemonDTO(data.id, data.name, data.height, data.weight);
+    return new PokemonDTO(data.id, data.name, data.height, data.weight, data.sprites.front_default);
   }
 
   private static isValid(data: unknown): data is IPokemon {
@@ -26,7 +27,11 @@ export default class PokemonDTO {
       typeof (data as IPokemon).id === "number" &&
       typeof (data as IPokemon).name === "string" &&
       typeof (data as IPokemon).height === "number" &&
-      typeof (data as IPokemon).weight === "number"
+      typeof (data as IPokemon).weight === "number" &&
+      typeof (data as IPokemon).sprites === "object" &&
+      (data as IPokemon).sprites !== null &&
+      ((data as IPokemon).sprites.front_default === null ||
+        typeof (data as IPokemon).sprites.front_default === "string")
     );
   }
 }

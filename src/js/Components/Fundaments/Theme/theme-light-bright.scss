@@ -1,8 +1,7 @@
 @layer subtheme {
-	[data-theme='light-bright'] {
-		--color-theme: light-bright;
+  [data-theme="light-bright"] {
+    --color-theme: light-bright;
 
-		--color-background: var(--color-brand-light);
-		--color-background-tint: color-mix(in srgb, var(--color-brand-light), var(--color-neutral-black) 5%);
-	}
+    --color-background: var(--color-brand-light);
+  }
 }
