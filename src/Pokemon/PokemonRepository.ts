@@ -9,13 +9,13 @@ export default class PokemonRepository implements IPokemonRepository {
   }
 
   async findById(id: number): Promise<PokemonDTO> {
-    const response = await this.client.get<IPokemon>(`/pokemon/${id}`);
+    const response = await this.client.get<IPokemon>(`pokemon/${id}`);
 
     return PokemonDTO.fromResponse(response);
   }
 
   async findByName(name: string): Promise<PokemonDTO> {
-    const response = await this.client.get<IPokemon>(`/pokemon/${name}`);
+    const response = await this.client.get<IPokemon>(`pokemon/${name}`);
 
     return PokemonDTO.fromResponse(response);
   }

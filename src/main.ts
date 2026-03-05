@@ -9,6 +9,10 @@ const app = createApp(App);
 
 app.use(router);
 
+app.config.errorHandler = (error) => {
+  console.error("Unhandled error:", error);
+};
+
 const pokeClient = new PokemonClient();
 const pokemonRepo = new PokemonRepository(pokeClient);
 PokemonService.init(pokemonRepo);
