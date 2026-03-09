@@ -30,6 +30,12 @@ src/
 
 The app follows a `Service → Repository → Client` chain. Each layer has one responsibility and only talks to the layer directly below it through a contract.
 
+Each layer answers a different question:
+
+- `PokemonService` asks _"what does the app need to do?"_
+- `PokemonRepository` asks _"how do I get the data the app needs?"_
+- `PokemonClient` asks _"how do I communicate with the external system?"_
+
 This means:
 
 - Swap `fetch` for `axios`? Only `HttpClient` changes
