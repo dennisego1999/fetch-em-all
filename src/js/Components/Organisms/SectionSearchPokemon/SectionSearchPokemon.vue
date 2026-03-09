@@ -85,9 +85,11 @@ watch(search, reset);
       gutter="both"
       :size="pokemonResult && !isError ? 2 : 10"
     >
-      <PokemonCard v-if="pokemonResult" :pokemon="pokemonResult" />
+      <Transition name="fade" mode="out-in">
+        <PokemonCard v-if="pokemonResult" :pokemon="pokemonResult" />
 
-      <Error v-else-if="isError"> Failed to find a Pokémon for '{{ search }}' </Error>
+        <Error v-else-if="isError"> Failed to find a Pokémon for '{{ search }}' </Error>
+      </Transition>
     </Section>
   </Section>
 </template>

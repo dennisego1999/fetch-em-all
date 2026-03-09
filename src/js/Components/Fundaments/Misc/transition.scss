@@ -1,15 +1,26 @@
 @view-transition {
-	navigation: auto;
+  navigation: auto;
 }
 
 :root {
-	--transition-speed-fast: 150ms;
-	--transition-speed-normal: 250ms;
-	--transition-speed-slow: 500ms;
-	--transition-speed-snail: 1s;
-	--transition-speed: var(--transition-speed-normal);
+  --transition-speed-fast: 150ms;
+  --transition-speed-normal: 250ms;
+  --transition-speed-slow: 500ms;
+  --transition-speed-snail: 1s;
+  --transition-speed: var(--transition-speed-normal);
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+// Vue specific transitions below
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity var(--transition-speed);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
