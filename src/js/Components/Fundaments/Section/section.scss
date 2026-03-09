@@ -1,282 +1,299 @@
 @use "../../sass/sass.scss";
 
 @layer fundaments {
-	:root {
-		--section-1: max(10cqi, 10rem);
-		--section-2: max(20cqi, 20rem);
-		--section-3: max(30cqi, 30rem);
-		--section-4: max(40cqi, 40rem);
-		--section-5: max(50cqi, 50rem);
-		--section-6: max(60cqi, 60rem);
-		--section-7: max(70cqi, 70rem);
-		--section-8: max(80cqi, 80rem);
-		--section-9: max(90cqi, 90rem);
-		--section-10: max(100cqi, 100rem);
+  :root {
+    --section-1: max(10cqi, 10rem);
+    --section-2: max(20cqi, 20rem);
+    --section-3: max(30cqi, 30rem);
+    --section-4: max(40cqi, 40rem);
+    --section-5: max(50cqi, 50rem);
+    --section-6: max(60cqi, 60rem);
+    --section-7: max(70cqi, 70rem);
+    --section-8: max(80cqi, 80rem);
+    --section-9: max(90cqi, 90rem);
+    --section-10: max(100cqi, 100rem);
 
-		--section-viewport-1: max(10vw, 10rem);
-		--section-viewport-2: max(20vw, 20rem);
-		--section-viewport-3: max(30vw, 30rem);
-		--section-viewport-4: max(40vw, 40rem);
-		--section-viewport-5: max(50vw, 50rem);
-		--section-viewport-6: max(60vw, 60rem);
-		--section-viewport-7: max(70vw, 70rem);
-		--section-viewport-8: max(80vw, 80rem);
-		--section-viewport-9: max(90vw, 90rem);
-		--section-viewport-10: max(100vw, 100rem);
+    --section-viewport-1: max(10vw, 10rem);
+    --section-viewport-2: max(20vw, 20rem);
+    --section-viewport-3: max(30vw, 30rem);
+    --section-viewport-4: max(40vw, 40rem);
+    --section-viewport-5: max(50vw, 50rem);
+    --section-viewport-6: max(60vw, 60rem);
+    --section-viewport-7: max(70vw, 70rem);
+    --section-viewport-8: max(80vw, 80rem);
+    --section-viewport-9: max(90vw, 90rem);
+    --section-viewport-10: max(100vw, 100rem);
 
-		--section-min-width: 0rem;
-		--section-viewport-min-width: 0rem;
+    --section-min-width: 0rem;
+    --section-viewport-min-width: 0rem;
 
-		--section-max-width: var(--section-10);
-		--section-viewport-max-width: var(--section-viewport-10);
+    --section-max-width: var(--section-10);
+    --section-viewport-max-width: var(--section-viewport-10);
 
-		--section-viewport-height: 100dvh;
-	}
+    --section-viewport-height: 100dvh;
+  }
 
-	.section {
-		--section-padding-large: #{sass.fluid(40px, 120px, false)};
-		--section-padding-small: #{sass.fluid(40px, 80px, false)};
-		--section-padding-tiny: #{sass.fluid(40px, 52px, false)};
-		--section-padding: var(--section-padding-large);
-		--section-padding-block-start: 0rem;
-		--section-padding-block-end: 0rem;
-		--section-gutter-min: #{sass.fluid(20px, 120px, false)};
-		--section-gutter-small-min: #{sass.fluid(20px, 80px, false)};
-		--section-gutter-tiny-min: #{sass.fluid(20px, 52px, false)};
-		--section-viewport-gutter-min: #{sass.fluid(20px, 120px, false, vw)};
-		--section-gutter-left: 0rem;
-		--section-gutter-right: 0rem;
+  .section {
+    --section-padding-large: #{sass.fluid(40px, 120px, false)};
+    --section-padding-small: #{sass.fluid(40px, 80px, false)};
+    --section-padding-tiny: #{sass.fluid(40px, 52px, false)};
+    --section-padding: var(--section-padding-large);
+    --section-padding-block-start: 0rem;
+    --section-padding-block-end: 0rem;
+    --section-gutter-min: #{sass.fluid(20px, 120px, false)};
+    --section-gutter-small-min: #{sass.fluid(20px, 80px, false)};
+    --section-gutter-tiny-min: #{sass.fluid(20px, 52px, false)};
+    --section-gutter-extra-tiny-min: #{sass.fluid(20px, 24px, false)};
+    --section-viewport-gutter-min: #{sass.fluid(20px, 120px, false, vw)};
+    --section-gutter-left: 0rem;
+    --section-gutter-right: 0rem;
 
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		min-width: min(100%, var(--section-min-width));
-		max-width: var(--section-max-width);
-		padding-block-start: var(--section-padding-block-start);
-		padding-block-end: var(--section-padding-block-end);
-		padding-inline-start: var(--section-gutter-left);
-		padding-inline-end: var(--section-gutter-right);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: min(100%, var(--section-min-width));
+    max-width: var(--section-max-width);
+    padding-block-start: var(--section-padding-block-start);
+    padding-block-end: var(--section-padding-block-end);
+    padding-inline-start: var(--section-gutter-left);
+    padding-inline-end: var(--section-gutter-right);
 
-		&[data-background]:not([data-background="false"]) {
-			background-color: var(--color-background);
-		}
+    &[data-background]:not([data-background="false"]) {
+      background-color: var(--color-background);
+    }
 
-		&[data-clip]:not([data-clip="false"]) {
-			overflow-x: clip;
-		}
+    &[data-clip]:not([data-clip="false"]) {
+      overflow-x: clip;
+    }
 
-		&[data-clip="both"] {
-			overflow: clip;
-		}
+    &[data-clip="both"] {
+      overflow: clip;
+    }
 
-		&[data-wrap]:not([data-wrap="false"]) {
-			flex-wrap: wrap;
-		}
+    &[data-wrap]:not([data-wrap="false"]) {
+      flex-wrap: wrap;
+    }
 
-		&[data-gap] {
-			gap: var(--section-gutter);
-		}
+    &[data-gap] {
+      gap: var(--section-gutter);
+    }
 
-		&[data-gap="medium"] {
-			gap: var(--section-gutter-min);
-		}
+    &[data-gap="medium"] {
+      gap: var(--section-gutter-min);
+    }
 
-		&[data-gap="small"] {
-			gap: var(--section-gutter-small-min);
-		}
+    &[data-gap="small"] {
+      gap: var(--section-gutter-small-min);
+    }
 
-		&[data-gap="tiny"] {
-			gap: var(--section-gutter-tiny-min);
-		}
+    &[data-gap="tiny"] {
+      gap: var(--section-gutter-tiny-min);
+    }
 
-		&[data-gap="flow"] {
-			gap: var(--base-gap);
-		}
+    &[data-gap="extra-tiny"] {
+      gap: var(--section-gutter-extra-tiny-min);
+    }
 
-		&[data-flex-direction="row"] {
-			flex-direction: row;
-		}
+    &[data-gap="flow"] {
+      gap: var(--base-gap);
+    }
 
-		&[data-flex-direction="row-reverse"] {
-			flex-direction: row-reverse;
-		}
+    &[data-flex-direction="row"] {
+      flex-direction: row;
+    }
 
-		&[data-aspect-ratio] {
-			min-height: min(var(--section-viewport-height), var(--aspect-ratio-height));
-		}
+    &[data-flex-direction="row-reverse"] {
+      flex-direction: row-reverse;
+    }
 
-		&[data-border-radius] {
-			border-radius: var(--border-radius);
-		}
+    &[data-aspect-ratio] {
+      min-height: min(var(--section-viewport-height), var(--aspect-ratio-height));
+    }
 
-		&:not([data-size]) {
-			--section-max-width: var(--section-10);
-			--section-viewport-max-width: var(--section-viewport-10);
-		}
+    &[data-border-radius] {
+      border-radius: var(--border-radius);
+    }
 
-		@for $i from 1 through 11 {
-			&[data-size="#{$i}"] {
-				--section-max-width: var(--section-#{$i});
-				--section-viewport-max-width: var(--section-viewport-#{$i});
-			}
+    &:not([data-size]) {
+      --section-max-width: var(--section-10);
+      --section-viewport-max-width: var(--section-viewport-10);
+    }
 
-			&[data-min-size="#{$i}"] {
-				--section-min-width: var(--section-#{$i});
-				--section-viewport-min-width: var(--section-viewport-#{$i});
-			}
-		}
+    @for $i from 1 through 11 {
+      &[data-size="#{$i}"] {
+        --section-max-width: var(--section-#{$i});
+        --section-viewport-max-width: var(--section-viewport-#{$i});
+      }
 
-		&[data-size="fit-content"] {
-			width: fit-content;
-			max-width: 100%;
-		}
+      &[data-min-size="#{$i}"] {
+        --section-min-width: var(--section-#{$i});
+        --section-viewport-min-width: var(--section-viewport-#{$i});
+      }
+    }
 
-		&[data-container]:not([data-container="false"]) {
-			container-type: inline-size;
-		}
+    &[data-size="fit-content"] {
+      width: fit-content;
+      max-width: 100%;
+    }
 
-		&[data-padding="both"] {
-			--section-padding-block-start: var(--section-padding);
-			--section-padding-block-end: var(--section-padding);
-		}
+    &[data-container]:not([data-container="false"]) {
+      container-type: inline-size;
+    }
 
-		&[data-padding="top"] {
-			--section-padding-block-start: var(--section-padding);
-		}
+    &[data-padding="both"] {
+      --section-padding-block-start: var(--section-padding);
+      --section-padding-block-end: var(--section-padding);
+    }
 
-		&[data-padding="bottom"] {
-			--section-padding-block-end: var(--section-padding);
-		}
+    &[data-padding="top"] {
+      --section-padding-block-start: var(--section-padding);
+    }
 
-		&[data-padding-size="small"] {
-			--section-padding: var(--section-padding-small);
-		}
+    &[data-padding="bottom"] {
+      --section-padding-block-end: var(--section-padding);
+    }
 
-		&[data-padding-size="tiny"] {
-			--section-padding: var(--section-padding-tiny);
-		}
+    &[data-padding-size="small"] {
+      --section-padding: var(--section-padding-small);
+    }
 
-		&[data-padding-size="header"] {
-			--section-padding: var(--header-height);
-		}
+    &[data-padding-size="tiny"] {
+      --section-padding: var(--section-padding-tiny);
+    }
 
-		&[data-padding-size="gutter"] {
-			--section-padding: var(--section-gutter);
-		}
+    &[data-padding-size="header"] {
+      --section-padding: var(--header-height);
+    }
 
-		&[data-gutter]:not([data-gutter="false"]) {
-			--section-gutter: max(calc((max(100cqi, var(--section-max-width)) + calc(var(--section-max-width) * -1)) / 2), var(--section-gutter-min));
-			--section-viewport-gutter: max(calc((max(100vw, var(--section-viewport-max-width)) + calc(var(--section-viewport-max-width) * -1)) / 2), var(--section-viewport-gutter-min));
-		}
+    &[data-padding-size="gutter"] {
+      --section-padding: var(--section-gutter);
+    }
 
-		&[data-gutter="both"] {
-			max-width: 100%;
-			--section-gutter-left: var(--section-gutter);
-			--section-gutter-right: var(--section-gutter);
-		}
+    &[data-gutter]:not([data-gutter="false"]) {
+      --section-gutter: max(
+        calc((max(100cqi, var(--section-max-width)) + calc(var(--section-max-width) * -1)) / 2),
+        var(--section-gutter-min)
+      );
+      --section-viewport-gutter: max(
+        calc(
+          (
+              max(100vw, var(--section-viewport-max-width)) +
+                calc(var(--section-viewport-max-width) * -1)
+            ) /
+            2
+        ),
+        var(--section-viewport-gutter-min)
+      );
+    }
 
-		&[data-gutter="left"] {
-			max-width: 100%;
-			--section-gutter-left: var(--section-gutter);
-		}
+    &[data-gutter="both"] {
+      max-width: 100%;
+      --section-gutter-left: var(--section-gutter);
+      --section-gutter-right: var(--section-gutter);
+    }
 
-		&[data-gutter="right"] {
-			max-width: 100%;
-			--section-gutter-right: var(--section-gutter);
-		}
+    &[data-gutter="left"] {
+      max-width: 100%;
+      --section-gutter-left: var(--section-gutter);
+    }
 
-		&[data-gutter-size="small"] {
-			--section-gutter-min: var(--section-gutter-small-min);
-		}
+    &[data-gutter="right"] {
+      max-width: 100%;
+      --section-gutter-right: var(--section-gutter);
+    }
 
-		&[data-gutter-size="tiny"] {
-			--section-gutter-min: var(--section-gutter-tiny-min);
-		}
+    &[data-gutter-size="small"] {
+      --section-gutter-min: var(--section-gutter-small-min);
+    }
 
-		&[data-align="start"],
-		&[data-align="left"] {
-			align-items: start;
-		}
+    &[data-gutter-size="tiny"] {
+      --section-gutter-min: var(--section-gutter-tiny-min);
+    }
 
-		&[data-align="center"] {
-			align-items: center;
-		}
+    &[data-align="start"],
+    &[data-align="left"] {
+      align-items: start;
+    }
 
-		&[data-align="end"],
-		&[data-align="right"] {
-			align-items: end;
-		}
+    &[data-align="center"] {
+      align-items: center;
+    }
 
-		&[data-align="between"] {
-			align-items: space-between;
-		}
+    &[data-align="end"],
+    &[data-align="right"] {
+      align-items: end;
+    }
 
-		&[data-align="around"] {
-			align-items: space-around;
-		}
+    &[data-align="between"] {
+      align-items: space-between;
+    }
 
-		&[data-align="stretch"] {
-			align-items: stretch;
-		}
+    &[data-align="around"] {
+      align-items: space-around;
+    }
 
-		&[data-justify="start"],
-		&[data-justify="left"] {
-			justify-content: start;
-		}
+    &[data-align="stretch"] {
+      align-items: stretch;
+    }
 
-		&[data-justify="center"] {
-			justify-content: center;
-		}
+    &[data-justify="start"],
+    &[data-justify="left"] {
+      justify-content: start;
+    }
 
-		&[data-justify="end"],
-		&[data-justify="right"] {
-			justify-content: end;
-		}
+    &[data-justify="center"] {
+      justify-content: center;
+    }
 
-		&[data-justify="between"] {
-			justify-content: space-between;
-		}
+    &[data-justify="end"],
+    &[data-justify="right"] {
+      justify-content: end;
+    }
 
-		&[data-justify="around"] {
-			justify-content: space-around;
-		}
+    &[data-justify="between"] {
+      justify-content: space-between;
+    }
 
-		&[data-justify="stretch"] {
-			justify-content: stretch;
-		}
+    &[data-justify="around"] {
+      justify-content: space-around;
+    }
 
-		&[data-flex="1"] {
-			flex: 1;
-		}
+    &[data-justify="stretch"] {
+      justify-content: stretch;
+    }
 
-		&[data-flex="auto"] {
-			flex: auto;
-		}
+    &[data-flex="1"] {
+      flex: 1;
+    }
 
-		&[data-flex="none"] {
-			flex: none;
-		}
+    &[data-flex="auto"] {
+      flex: auto;
+    }
 
-		&[data-break-out="both"] {
-			@media (min-width: 1000px) {
-				width: calc(100% + var(--section-viewport-gutter));
-				margin-inline: calc(var(--section-viewport-gutter) / -2);
-			}
-		}
+    &[data-flex="none"] {
+      flex: none;
+    }
 
-		&[data-break-out="left"] {
-			@media (min-width: 1000px) {
-				width: calc(100% + var(--section-viewport-gutter) / 2);
-				margin-inline-start: calc(var(--section-viewport-gutter) / -2);
-			}
-		}
+    &[data-break-out="both"] {
+      @media (min-width: 1000px) {
+        width: calc(100% + var(--section-viewport-gutter));
+        margin-inline: calc(var(--section-viewport-gutter) / -2);
+      }
+    }
 
-		&[data-break-out="right"] {
-			@media (min-width: 1000px) {
-				width: calc(100% + var(--section-viewport-gutter) / 2);
-				margin-inline-end: calc(var(--section-viewport-gutter) / -2);
-			}
-		}
-	}
+    &[data-break-out="left"] {
+      @media (min-width: 1000px) {
+        width: calc(100% + var(--section-viewport-gutter) / 2);
+        margin-inline-start: calc(var(--section-viewport-gutter) / -2);
+      }
+    }
+
+    &[data-break-out="right"] {
+      @media (min-width: 1000px) {
+        width: calc(100% + var(--section-viewport-gutter) / 2);
+        margin-inline-end: calc(var(--section-viewport-gutter) / -2);
+      }
+    }
+  }
 }

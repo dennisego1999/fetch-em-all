@@ -7,7 +7,7 @@ import Section from "@/js/Components/Fundaments/Section/Section.vue";
 <template>
   <Section
     class="navigation"
-    tag="navigation"
+    tag="nav"
     theme="light-tint"
     padding="both"
     padding-size="tiny"

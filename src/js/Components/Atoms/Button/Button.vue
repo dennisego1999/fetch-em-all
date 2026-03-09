@@ -36,6 +36,7 @@ const emit = defineEmits<{
     v-else
     class="button"
     :class="{ 'base-button--disabled': disabled }"
+    :disabled="disabled"
     @click="emit('click')"
   >
     <slot />

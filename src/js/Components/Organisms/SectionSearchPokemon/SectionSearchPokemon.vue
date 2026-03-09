@@ -1,24 +1,22 @@
 <script setup lang="ts">
 import type PokemonDTO from "@/js/Classes/Pokemon/PokemonDTO";
-import InputField from "@/js/Components/Atoms/InputField/InputField.vue";
 import Section from "@/js/Components/Fundaments/Section/Section.vue";
 import { ref, watch, type Ref } from "vue";
-import Form from "@/js/Components/Atoms/Form/Form.vue";
 import PokemonService from "@/js/Classes/Pokemon/PokemonService";
-import EmptySearchError from "@/js/Classes/Errors/EmptySearchError";
 import HttpError from "@/js/Classes/Errors/HttpError";
 import PokemonCard from "@/js/Components/Molecules/PokemonCard/PokemonCard.vue";
 import Error from "@/js/Components/Atoms/Error/Error.vue";
 import PokemonNotFoundError from "@/js/Classes/Pokemon/PokemonNotFoundError";
+import SearchBar from "@/js/Components/Organisms/SearchBar/SearchBar.vue";
 
 const search: Ref<string | null> = ref(null);
 const isLoading: Ref<boolean> = ref(false);
 const isError: Ref<boolean> = ref(false);
 const pokemonResult: Ref<PokemonDTO | null> = ref(null);
 
-async function onChange() {
+async function submit(): Promise<void> {
   if (!search.value) {
-    throw new EmptySearchError();
+    return;
   }
 
   // Set loading state
@@ -30,11 +28,7 @@ async function onChange() {
   } catch (e) {
     isError.value = true;
 
-    if (
-      e instanceof EmptySearchError ||
-      e instanceof HttpError ||
-      e instanceof PokemonNotFoundError
-    ) {
+    if (e instanceof HttpError || e instanceof PokemonNotFoundError) {
       console.error(e);
     } else {
       throw e;
@@ -45,8 +39,7 @@ async function onChange() {
   isLoading.value = false;
 }
 
-function reset() {
-  // Reset reactives
+function reset(): void {
   isError.value = false;
   pokemonResult.value = null;
 }
@@ -57,26 +50,12 @@ watch(search, reset);
 
 <template>
   <Section class="section-search-pokemon">
-    <Section
-      class="section-search-pokemon__form"
-      theme="dark"
-      padding="both"
-      padding-size="tiny"
-      gutter="both"
-      align="center"
-      :background="true"
-    >
-      <Form @submit.prevent>
-        <InputField
-          v-model="search"
-          id="search"
-          placeholder="Find a pokémon"
-          :disabled="isLoading"
-          @change="onChange"
-          @enter="reset"
-        />
-      </Form>
-    </Section>
+    <SearchBar
+      v-model="search"
+      placeholder="Find a pokémon"
+      :disabled="isLoading"
+      @submit="submit"
+    />
 
     <Section
       class="section-search-pokemon__result"

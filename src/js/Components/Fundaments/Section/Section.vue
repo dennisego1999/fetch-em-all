@@ -19,7 +19,7 @@ interface Props {
   borderRadius?: string | null;
   breakOut?: string | null;
   gap?: string | null;
-  wrap?: string | null;
+  wrap?: boolean;
   flow?: string | null;
   flex?: string | null;
   clip?: string | null;
@@ -43,7 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
   borderRadius: null,
   breakOut: null,
   gap: null,
-  wrap: null,
+  wrap: false,
   flow: null,
   flex: null,
   clip: null,

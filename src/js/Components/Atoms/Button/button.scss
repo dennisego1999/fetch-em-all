@@ -13,7 +13,7 @@
     background-color: var(--color-button-background);
     padding: 0.5rem 0.75rem;
     font-size: var(--text-font-size);
-    font-weight: 700;
+    font-weight: 00;
     color: var(--color-text);
     transition: color var(--transition-speed);
     text-decoration: none;
@@ -33,7 +33,8 @@
         0 0 0 1px var(--button-focus-ring-color);
     }
 
-    &--disabled {
+    &--disabled,
+    &:disabled {
       background-color: var(--color-button-background-disabled);
       pointer-events: none;
       opacity: var(--button-disabled-opacity);
