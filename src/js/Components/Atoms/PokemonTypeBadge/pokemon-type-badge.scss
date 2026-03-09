@@ -1,0 +1,12 @@
+@layer atoms {
+  .pokemon-type-badge {
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(-color-text);
+    background-color: purple;
+  }
+}

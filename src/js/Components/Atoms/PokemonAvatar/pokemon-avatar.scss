@@ -1,0 +1,14 @@
+@layer atoms {
+  .pokemon-avatar {
+    position: relative;
+    height: 100px;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    background-color: white;
+    border: 5px solid var(--color-button-border);
+  }
+
+  .pokemon-avatar .visual__image {
+    padding: 15px;
+  }
+}

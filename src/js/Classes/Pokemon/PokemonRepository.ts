@@ -25,7 +25,6 @@ export default class PokemonRepository implements IPokemonRepository {
   async findByName(name: string): Promise<PokemonDTO> {
     try {
       const response = await this.client.getPokemonByName(name);
-      console.log(response);
       return PokemonDTO.fromResponse(response);
     } catch (e) {
       if (e instanceof HttpError && e.status === 404) {
