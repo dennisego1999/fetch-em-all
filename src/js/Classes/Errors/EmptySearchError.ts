@@ -1,6 +1,6 @@
 export default class SearchError extends Error {
   constructor() {
-    super("Valid search query is required");
+    super("Search query cannot be empty");
 
     this.name = "SearchError";
   }

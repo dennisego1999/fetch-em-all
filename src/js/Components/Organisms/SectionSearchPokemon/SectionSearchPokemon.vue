@@ -5,7 +5,7 @@ import Section from "@/js/Components/Fundaments/Section/Section.vue";
 import { ref, type Ref } from "vue";
 import Form from "@/js/Components/Atoms/Form/Form.vue";
 import PokemonService from "@/js/Classes/Pokemon/PokemonService";
-import SearchError from "@/js/Classes/Errors/SearchError";
+import EmptySearchError from "@/js/Classes/Errors/EmptySearchError";
 import HttpError from "@/js/Classes/Errors/HttpError";
 import PokemonCard from "@/js/Components/Molecules/PokemonCard/PokemonCard.vue";
 import Error from "@/js/Components/Atoms/Error/Error.vue";
@@ -17,7 +17,7 @@ const pokemonResult: Ref<PokemonDTO | null> = ref(null);
 
 async function onChange() {
   if (!search.value) {
-    throw new SearchError();
+    throw new EmptySearchError();
   }
 
   // Reset reactives
@@ -33,7 +33,7 @@ async function onChange() {
   } catch (e) {
     isError.value = true;
 
-    if (e instanceof SearchError || e instanceof HttpError) {
+    if (e instanceof EmptySearchError || e instanceof HttpError) {
       console.error(e);
     } else {
       throw e;
