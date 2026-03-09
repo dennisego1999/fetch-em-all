@@ -22,9 +22,19 @@ import Section from "@/js/Components/Fundaments/Section/Section.vue";
       <Logo class="navigation__logo" />
     </Link>
 
-    <Section class="navigation__links" tag="ul" flex-direction="row" justify="end" align="center">
+    <Section
+      class="navigation__links"
+      tag="ul"
+      flex-direction="row"
+      justify="end"
+      align="center"
+      gap="tiny"
+    >
       <li>
         <Link href="/weight-battle"> Weight battle </Link>
+      </li>
+      <li>
+        <Link href="/search"> Search </Link>
       </li>
     </Section>
   </Section>

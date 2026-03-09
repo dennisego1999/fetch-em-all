@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/js/Pages/Home.vue";
 import WeightBattle from "@/js/Pages/WeightBattle.vue";
+import Search from "../Pages/Search.vue";
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: "/weight-battle",
     name: "weight_battle_page",
     component: WeightBattle,
+  },
+  {
+    path: "/search",
+    name: "search_page",
+    component: Search,
   },
   {
     path: "/:catchAll(.*)",

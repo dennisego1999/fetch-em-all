@@ -1,0 +1,80 @@
+<script setup lang="ts">
+import type PokemonDTO from "@/js/Classes/Pokemon/PokemonDTO";
+import InputField from "@/js/Components/Atoms/InputField/InputField.vue";
+import Section from "@/js/Components/Fundaments/Section/Section.vue";
+import { ref, type Ref } from "vue";
+import Form from "@/js/Components/Atoms/Form/Form.vue";
+import PokemonService from "@/js/Classes/Pokemon/PokemonService";
+import SearchError from "@/js/Classes/Errors/SearchError";
+import HttpError from "@/js/Classes/Errors/HttpError";
+import PokemonCard from "@/js/Components/Molecules/PokemonCard/PokemonCard.vue";
+import Error from "@/js/Components/Atoms/Error/Error.vue";
+
+const search: Ref<string | null> = ref(null);
+const isLoading: Ref<boolean> = ref(false);
+const isError: Ref<boolean> = ref(false);
+const pokemonResult: Ref<PokemonDTO | null> = ref(null);
+
+async function onChange() {
+  if (!search.value) {
+    throw new SearchError();
+  }
+
+  // Reset reactives
+  isError.value = false;
+  pokemonResult.value = null;
+
+  // Set loading state
+  isLoading.value = true;
+
+  try {
+    // Search
+    pokemonResult.value = await PokemonService.instance.search(search.value);
+  } catch (e) {
+    isError.value = true;
+
+    if (e instanceof SearchError || e instanceof HttpError) {
+      console.error(e);
+    } else {
+      throw e;
+    }
+  }
+
+  // Set loading state
+  isLoading.value = false;
+}
+</script>
+
+<template>
+  <Section class="section-search-pokemon">
+    <Section
+      class="section-search-pokemon__form"
+      theme="dark"
+      padding="both"
+      gutter="both"
+      align="center"
+      :background="true"
+    >
+      <Form @submit.prevent>
+        <InputField
+          v-model="search"
+          id="search"
+          placeholder="Find a pokémon"
+          :disabled="isLoading"
+          @change="onChange"
+        />
+      </Form>
+    </Section>
+
+    <Section
+      class="section-search-pokemon__result"
+      padding="both"
+      gutter="both"
+      :size="pokemonResult && !isError ? 2 : 10"
+    >
+      <PokemonCard v-if="pokemonResult" :pokemon="pokemonResult" />
+
+      <Error v-else-if="isError"> Failed to find a Pokémon for '{{ search }}' </Error>
+    </Section>
+  </Section>
+</template>
