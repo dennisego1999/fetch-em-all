@@ -2,7 +2,7 @@
 import type PokemonDTO from "@/js/Classes/Pokemon/PokemonDTO";
 import InputField from "@/js/Components/Atoms/InputField/InputField.vue";
 import Section from "@/js/Components/Fundaments/Section/Section.vue";
-import { ref, type Ref } from "vue";
+import { ref, watch, type Ref } from "vue";
 import Form from "@/js/Components/Atoms/Form/Form.vue";
 import PokemonService from "@/js/Classes/Pokemon/PokemonService";
 import EmptySearchError from "@/js/Classes/Errors/EmptySearchError";
@@ -20,10 +20,6 @@ async function onChange() {
   if (!search.value) {
     throw new EmptySearchError();
   }
-
-  // Reset reactives
-  isError.value = false;
-  pokemonResult.value = null;
 
   // Set loading state
   isLoading.value = true;
@@ -48,6 +44,15 @@ async function onChange() {
   // Set loading state
   isLoading.value = false;
 }
+
+function reset() {
+  // Reset reactives
+  isError.value = false;
+  pokemonResult.value = null;
+}
+
+// Make sure error and result are reset everytime search query changes
+watch(search, reset);
 </script>
 
 <template>
@@ -56,6 +61,7 @@ async function onChange() {
       class="section-search-pokemon__form"
       theme="dark"
       padding="both"
+      padding-size="tiny"
       gutter="both"
       align="center"
       :background="true"
@@ -67,6 +73,7 @@ async function onChange() {
           placeholder="Find a pokémon"
           :disabled="isLoading"
           @change="onChange"
+          @enter="reset"
         />
       </Form>
     </Section>
@@ -74,6 +81,7 @@ async function onChange() {
     <Section
       class="section-search-pokemon__result"
       padding="both"
+      padding-size="tiny"
       gutter="both"
       :size="pokemonResult && !isError ? 2 : 10"
     >

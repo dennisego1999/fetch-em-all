@@ -1,0 +1,42 @@
+@layer atoms {
+  :root {
+    --button-focus-ring-color: #ffffff;
+    --button-disabled-opacity: 0.3;
+  }
+
+  .button {
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-button-border);
+    background-color: var(--color-button-background);
+    padding: 0.5rem 0.75rem;
+    font-size: var(--text-font-size);
+    font-weight: 700;
+    color: var(--color-text);
+    transition: color var(--transition-speed);
+    text-decoration: none;
+
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--color-button-background-hover);
+        border-color: var(--color-button-border-hover);
+      }
+    }
+
+    &:focus {
+      border-color: var(--button-focus-ring-color);
+      outline: none;
+      box-shadow:
+        var(--button-shadow),
+        0 0 0 1px var(--button-focus-ring-color);
+    }
+
+    &--disabled {
+      background-color: var(--color-button-background-disabled);
+      pointer-events: none;
+      opacity: var(--button-disabled-opacity);
+    }
+  }
+}

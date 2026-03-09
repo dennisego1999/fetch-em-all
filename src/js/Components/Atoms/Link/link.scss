@@ -1,6 +1,6 @@
 @layer atoms {
   .link {
-    color: var(--color-text);
+    color: var(--color-link);
     text-decoration: none;
     font-family: inherit;
     font-size: var(--text-font-size);
@@ -9,7 +9,7 @@
 
   @media (hover: hover) {
     .link:hover .text {
-      color: var(--color-brand-dark-blue);
+      color: var(--color-link-hover);
     }
   }
 }
