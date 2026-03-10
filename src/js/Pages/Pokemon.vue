@@ -9,6 +9,7 @@ import Section from "@/js/Components/Fundaments/Section/Section.vue";
 import SectionPokemonHero from "@/js/Components/Organisms/SectionPokemonHero/SectionPokemonHero.vue";
 import SectionPokemonPhysical from "@/js/Components/Organisms/SectionPokemonPhysical/SectionPokemonPhysical.vue";
 import SectionPokemonStats from "@/js/Components/Organisms/SectionPokemonStats/SectionPokemonStats.vue";
+import SectionPokemonAbilities from "../Components/Organisms/SectionPokemonAbilities/SectionPokemonAbilities.vue";
 
 const rawName = useRoute().params.name;
 const pokemonName: string | undefined = Array.isArray(rawName) ? rawName[0] : rawName;
@@ -39,20 +40,6 @@ onMounted(async () => {
 
     <SectionPokemonStats :stats="pokemon.stats" />
 
-    <Section>
-      <Heading :level="3">Abilities</Heading>
-
-      <div class="pokemon-detail__abilities">
-        <div
-          v-for="ability in pokemon.abilities"
-          :key="ability.name"
-          class="pokemon-detail__ability"
-          :class="{ 'pokemon-detail__ability--hidden': ability.isHidden }"
-        >
-          <Text :capitalize="true">{{ ability.name.replace("-", " ") }}</Text>
-          <Text v-if="ability.isHidden" class="pokemon-detail__ability-tag">Hidden</Text>
-        </div>
-      </div>
-    </Section>
+    <SectionPokemonAbilities :abilities="pokemon.abilities" />
   </Section>
 </template>

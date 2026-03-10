@@ -1,0 +1,28 @@
+@layer molecules {
+  :root {
+    --card-background: var(--color-neutral-950);
+    --card-border-color: var(--color-neutral-300);
+    --card-text-color: var(--color-neutral-white);
+    --card-text-tint-color: var(--color-brand-yellow);
+  }
+
+  .card {
+    position: relative;
+    flex: 1;
+    background: var(--card-background);
+    border: 1px solid var(--card-border-color);
+    border-radius: 16px;
+    padding: 1.2rem;
+    overflow: hidden;
+
+    & a {
+      cursor: pointer;
+    }
+  }
+
+  .card__header,
+  .card__content,
+  .card__footer {
+    position: relative;
+  }
+}
