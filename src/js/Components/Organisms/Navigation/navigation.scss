@@ -1,4 +1,9 @@
 @layer organisms {
+  nav.navigation {
+    --section-padding-block-start: 1rem;
+    --section-padding-block-end: 1rem;
+  }
+
   .navigation__logo {
     width: 10cqw;
   }

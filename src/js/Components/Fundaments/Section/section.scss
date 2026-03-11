@@ -38,8 +38,8 @@
     --section-padding-small: #{sass.fluid(40px, 80px, false)};
     --section-padding-tiny: #{sass.fluid(40px, 52px, false)};
     --section-padding: var(--section-padding-large);
-    --section-padding-block-start: 0.5rem;
-    --section-padding-block-end: 0.5rem;
+    --section-padding-block-start: 0rem;
+    --section-padding-block-end: 0rem;
     --section-gutter-min: #{sass.fluid(20px, 120px, false)};
     --section-gutter-small-min: #{sass.fluid(20px, 80px, false)};
     --section-gutter-tiny-min: #{sass.fluid(20px, 52px, false)};
