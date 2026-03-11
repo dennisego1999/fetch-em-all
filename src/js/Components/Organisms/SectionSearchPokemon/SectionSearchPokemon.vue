@@ -75,7 +75,9 @@ onMounted(async () => {
       </Transition>
 
       <Transition name="fade">
-        <Error v-if="isError" :key="'error'"> Failed to find a Pokémon for '{{ search }}' </Error>
+        <Error v-if="isError" :key="'error'">
+          Failed to find a Pokémon for '{{ searchQuery }}'
+        </Error>
       </Transition>
     </Section>
   </Section>
