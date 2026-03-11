@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Link from "@/js/Components/Atoms/Link/Link.vue";
-import Section from "../../Fundaments/Section/Section.vue";
+import Section from "@/js/Components/Fundaments/Section/Section.vue";
 
 withDefaults(
   defineProps<{

@@ -24,5 +24,8 @@
   .card__content,
   .card__footer {
     position: relative;
+
+    --color-text: var(--color-neutral-white);
+    --color-heading: var(--color-neutral-white);
   }
 }

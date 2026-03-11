@@ -49,15 +49,24 @@
   }
 
   .pokemon-card__stat-label {
+    --color-link-hover: var(--color-neutral-white);
     text-transform: uppercase;
   }
 
   .pokemon-card__stat-value {
-    color: var(--color-accent);
+    color: var(--color-brand-yellow);
   }
 
   .pokemon-card__divider {
     width: 1px;
     background: var(--card-border-color);
+  }
+
+  .pokemon-card .pokemon-identifier {
+    --color-link-hover: var(--color-brand-yellow);
+  }
+
+  .pokemon-card .pokemon-card__type {
+    --color-link-hover: var(--color-neutral-white);
   }
 }
