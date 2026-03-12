@@ -1,0 +1,23 @@
+@layer organisms {
+  .section-pokemon-overview {
+    --cols: 1;
+  }
+
+  .section-pokemon-overview .pokemon-card {
+    flex: 0 0 calc((100% - (var(--section-gap) * (var(--cols) - 1))) / var(--cols));
+  }
+
+  /* 640px */
+  @media (min-width: 40rem) {
+    .section-pokemon-overview {
+      --cols: 2;
+    }
+  }
+
+  /* 1024px */
+  @media (min-width: 64rem) {
+    .section-pokemon-overview {
+      --cols: 4;
+    }
+  }
+}

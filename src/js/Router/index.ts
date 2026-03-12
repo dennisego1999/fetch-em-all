@@ -3,6 +3,7 @@ import Home from "@/js/Pages/Home.vue";
 import WeightBattle from "@/js/Pages/WeightBattle.vue";
 import Search from "@/js/Pages/Search.vue";
 import Pokemon from "@/js/Pages/Pokemon.vue";
+import Pokedex from "@/js/Pages/Pokedex.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/pokemon/:name",
     name: "pokemon_detail_page",
     component: Pokemon,
+  },
+  {
+    path: "/pokedex",
+    name: "pokedex_page",
+    component: Pokedex,
   },
   {
     path: "/:catchAll(.*)",

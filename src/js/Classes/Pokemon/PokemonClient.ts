@@ -1,6 +1,7 @@
 import HttpClient from "@/js/Classes/Clients/HttpClient";
 import type IPokemonClient from "@/js/Classes/Pokemon/IPokemonClient";
-import type IPokemon from "./IPokemon";
+import type IPokemon from "@/js/Classes/Pokemon/IPokemon";
+import type IPokemonList from "@/js/Classes/Pokemon/IPokemonList";
 
 export default class PokemonClient extends HttpClient implements IPokemonClient {
   constructor() {
@@ -13,5 +14,9 @@ export default class PokemonClient extends HttpClient implements IPokemonClient 
 
   getPokemonByName(name: string): Promise<IPokemon> {
     return this.get<IPokemon>(`pokemon/${name}`);
+  }
+
+  getPokemonList(offset: number, limit: number): Promise<IPokemonList> {
+    return this.get<IPokemonList>(`pokemon?offset=${offset}&limit=${limit}`);
   }
 }

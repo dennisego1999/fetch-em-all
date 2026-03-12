@@ -30,10 +30,17 @@ import Text from "@/js/Components/Atoms/Text/Text.vue";
       gap="tiny"
     >
       <li>
+        <Link href="/pokedex">
+          <Text>Pokédex</Text>
+        </Link>
+      </li>
+
+      <li>
         <Link href="/weight-battle">
           <Text>Weight battle</Text>
         </Link>
       </li>
+
       <li>
         <Link href="/find-pokemon">
           <Text>Find pokemon</Text>

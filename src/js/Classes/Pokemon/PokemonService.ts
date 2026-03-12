@@ -54,4 +54,15 @@ export default class PokemonService {
       ? `${a.name} is heavier than ${b.name}`
       : `${b.name} is heavier than ${a.name}`;
   }
+
+  /**
+   * Fetches a paginated list of Pokémon with full details.
+   * Note: fires one request per Pokémon in parallel on top of the list request.
+   * @param offset - Number of Pokémon to skip. Defaults to 0.
+   * @param limit - Number of Pokémon to fetch per page. Defaults to 12.
+   * @returns A promise resolving to an array of PokemonDTOs.
+   */
+  public async findAll(offset = 0, limit = 12): Promise<PokemonDTO[]> {
+    return this.repo.findAll(offset, limit);
+  }
 }

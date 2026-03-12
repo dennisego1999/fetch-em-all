@@ -48,6 +48,8 @@
     --section-gutter-left: 0rem;
     --section-gutter-right: 0rem;
 
+    --section-gap: 0;
+
     position: relative;
     display: flex;
     flex-direction: column;
@@ -58,6 +60,7 @@
     padding-block-end: var(--section-padding-block-end);
     padding-inline-start: var(--section-gutter-left);
     padding-inline-end: var(--section-gutter-right);
+    gap: var(--section-gap);
 
     &[data-background]:not([data-background="false"]) {
       background-color: var(--color-background);
@@ -76,27 +79,27 @@
     }
 
     &[data-gap] {
-      gap: var(--section-gutter);
+      --section-gap: var(--section-gutter);
     }
 
     &[data-gap="medium"] {
-      gap: var(--section-gutter-min);
+      --section-gap: var(--section-gutter-min);
     }
 
     &[data-gap="small"] {
-      gap: var(--section-gutter-small-min);
+      --section-gap: var(--section-gutter-small-min);
     }
 
     &[data-gap="tiny"] {
-      gap: var(--section-gutter-tiny-min);
+      --section-gap: var(--section-gutter-tiny-min);
     }
 
     &[data-gap="extra-tiny"] {
-      gap: var(--section-gutter-extra-tiny-min);
+      --section-gap: var(--section-gutter-extra-tiny-min);
     }
 
     &[data-gap="flow"] {
-      gap: var(--base-gap);
+      --section-gap: var(--base-gap);
     }
 
     &[data-flex-direction="row"] {
