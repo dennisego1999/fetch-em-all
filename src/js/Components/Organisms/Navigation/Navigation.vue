@@ -40,12 +40,6 @@ import Text from "@/js/Components/Atoms/Text/Text.vue";
           <Text>Weight battle</Text>
         </Link>
       </li>
-
-      <li>
-        <Link href="/find-pokemon">
-          <Text>Find pokemon</Text>
-        </Link>
-      </li>
     </Section>
   </Section>
 </template>
