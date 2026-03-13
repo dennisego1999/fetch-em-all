@@ -1,4 +1,4 @@
-# caught-em-all
+# fetch-em-all
 
 A Vue app which consumes the [PokéAPI](https://pokeapi.co/).
 
