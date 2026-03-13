@@ -19,9 +19,6 @@ async function fetchPokemons() {
   // Set fetching state
   isFetching.value = true;
 
-  // Update offset
-  offset += limit;
-
   // Get the next batch
   const { pokemons, hasNext: next } = await PokemonService.instance.findAll(offset, limit);
 
@@ -30,6 +27,9 @@ async function fetchPokemons() {
 
   // Add to results list
   results.value.push(...pokemons);
+
+  // Update offset
+  offset += limit;
 
   // Reset fetching state
   isFetching.value = false;
