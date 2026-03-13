@@ -39,15 +39,7 @@ async function handleSubmit(): Promise<void> {
 </script>
 
 <template>
-  <Section
-    class="search-bar"
-    theme="dark"
-    padding="both"
-    padding-size="tiny"
-    gutter="both"
-    align="center"
-    :background="true"
-  >
+  <Section class="search-bar" theme="dark" align="center" :background="true">
     <Section
       tag="form"
       class="form"
