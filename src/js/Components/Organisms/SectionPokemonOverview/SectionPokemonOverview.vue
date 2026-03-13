@@ -139,7 +139,10 @@ onMounted(async () => {
     </Transition>
 
     <Transition name="fade" mode="out-in">
-      <Button v-if="hasNext && displayedResults.length > 0 && !isFetching" @click="fetchPokemons">
+      <Button
+        v-if="hasNext && displayedResults.length > 0 && !isFetching && !searchQuery"
+        @click="fetchPokemons"
+      >
         Load more
       </Button>
 
