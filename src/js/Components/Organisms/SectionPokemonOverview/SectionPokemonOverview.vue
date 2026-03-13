@@ -83,7 +83,7 @@ async function submit(): Promise<void> {
   isFetching.value = false;
 }
 
-// Reset API result and error when query changes
+// Reset error when query changes
 watch(searchQuery, () => {
   isSearchError.value = false;
 });
