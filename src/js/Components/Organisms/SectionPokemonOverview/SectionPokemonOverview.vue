@@ -7,6 +7,7 @@ import Heading from "@/js/Components/Atoms/Heading/Heading.vue";
 import PokemonCard from "@/js/Components/Molecules/PokemonCard/PokemonCard.vue";
 import Text from "@/js/Components/Atoms/Text/Text.vue";
 import Button from "@/js/Components/Atoms/Button/Button.vue";
+import Loader from "@/js/Components/Atoms/Loader/Loader.vue";
 
 let offset: number = 0;
 const limit: number = 12;
@@ -54,18 +55,30 @@ onMounted(async () => fetchPokemons());
       had to catalogue 1000+ creatures and it wasn't going to be us.
     </Text>
 
-    <Section
+    <TransitionGroup
       v-if="results.length > 0"
-      class="section-pokemon-overview"
-      flex-direction="row"
-      gap="extra-tiny"
-      :wrap="true"
+      name="card"
+      tag="section"
+      class="section section-pokemon-overview"
+      data-size="10"
+      data-flex-direction="row"
+      data-gap="extra-tiny"
+      data-wrap="true"
+      appear
     >
-      <PokemonCard v-for="pokemon in results" :pokemon="pokemon" />
-    </Section>
+      <PokemonCard v-for="pokemon in results" :key="pokemon.id" :pokemon="pokemon" />
+    </TransitionGroup>
 
-    <Button v-if="hasNext && results.length > 0" :disabled="isFetching" @click="fetchPokemons"
-      >Load more</Button
-    >
+    <Transition name="card" mode="out-in">
+      <Button
+        v-if="hasNext && results.length > 0 && !isFetching"
+        :disabled="isFetching"
+        @click="fetchPokemons"
+      >
+        Load more
+      </Button>
+
+      <Loader v-else />
+    </Transition>
   </Section>
 </template>

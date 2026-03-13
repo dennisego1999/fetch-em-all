@@ -1,0 +1,64 @@
+@layer atoms {
+  @layer atoms {
+    .loader {
+      --loader-size: 100px;
+
+      width: var(--loader-size);
+      height: var(--loader-size);
+      border-radius: 50%;
+      position: relative;
+      box-shadow: -20px 0 rgba(0, 0, 0, 0.1) inset;
+      animation: roll 1s ease-in-out infinite;
+      background: linear-gradient(to bottom, #e83e35 0% 50.5%, #ffffff 50.51% 100%);
+    }
+
+    .loader::after {
+      content: "";
+      position: absolute;
+      top: calc(50% - 3px);
+      left: 0;
+      width: var(--loader-size);
+      height: 6px;
+      background: #3f3f3f;
+    }
+
+    .loader::before {
+      --button-size: calc(var(--loader-size) * 0.27);
+
+      content: "";
+      position: absolute;
+      top: calc(50% - var(--button-size) / 2);
+      left: calc(50% - var(--button-size) / 2);
+      width: var(--button-size);
+      height: var(--button-size);
+      border: solid 6px #3f3f3f;
+      border-radius: 50%;
+      background: white;
+      z-index: 1;
+      box-shadow: 0 0 15px -2px #c62828 inset;
+      animation: button 3s ease infinite;
+    }
+
+    @keyframes roll {
+      from {
+        transform: rotate(0);
+      }
+      90%,
+      to {
+        transform: rotate(720deg);
+      }
+    }
+
+    @keyframes button {
+      from,
+      50%,
+      to {
+        box-shadow: 0 0 15px -2px #c62828 inset;
+      }
+      25%,
+      75% {
+        box-shadow: 0 0 10px -2px #1300ea inset;
+      }
+    }
+  }
+}
