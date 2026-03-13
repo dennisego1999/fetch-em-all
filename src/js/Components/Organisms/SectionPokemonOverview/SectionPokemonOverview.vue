@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type PokemonDTO from "@/js/Classes/Pokemon/PokemonDTO";
 import PokemonService from "@/js/Classes/Pokemon/PokemonService";
-import { computed, onMounted, ref, type Ref } from "vue";
+import { onMounted, ref, watch, type Ref } from "vue";
 import Section from "@/js/Components/Fundaments/Section/Section.vue";
 import Heading from "@/js/Components/Atoms/Heading/Heading.vue";
 import PokemonCard from "@/js/Components/Molecules/PokemonCard/PokemonCard.vue";
@@ -10,13 +10,18 @@ import Button from "@/js/Components/Atoms/Button/Button.vue";
 import Loader from "@/js/Components/Atoms/Loader/Loader.vue";
 import SearchBar from "@/js/Components/Organisms/SearchBar/SearchBar.vue";
 import Error from "@/js/Components/Atoms/Error/Error.vue";
+import HttpError from "@/js/Classes/Errors/HttpError";
+import PokemonNotFoundError from "@/js/Classes/Pokemon/PokemonNotFoundError";
 
 let offset: number = 0;
 const limit: number = 12;
-const results: Ref<PokemonDTO[]> = ref([]);
+const localResults: Ref<PokemonDTO[]> = ref([]);
+const displayedResults: Ref<PokemonDTO[]> = ref([]);
 const hasNext: Ref<boolean> = ref(true);
 const isFetching: Ref<boolean> = ref(false);
 const searchQuery: Ref<string | null> = ref(null);
+const searchResult: Ref<PokemonDTO | null> = ref(null);
+const isSearchError: Ref<boolean> = ref(false);
 
 async function fetchPokemons(): Promise<void> {
   // Set fetching state
@@ -29,7 +34,7 @@ async function fetchPokemons(): Promise<void> {
   hasNext.value = next;
 
   // Add to results list
-  results.value.push(...pokemons);
+  localResults.value.push(...pokemons);
 
   // Increment offset
   offset += limit;
@@ -38,18 +43,58 @@ async function fetchPokemons(): Promise<void> {
   isFetching.value = false;
 }
 
-const displayedResults = computed<PokemonDTO[]>(() => {
+async function submit(): Promise<void> {
   if (!searchQuery.value) {
-    return results.value;
+    // Reset to full local results when query is cleared
+    displayedResults.value = localResults.value;
+    return;
   }
 
-  return results.value.filter((pokemon) =>
+  // Filter already-loaded results first
+  const localMatches = localResults.value.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchQuery.value!.toLowerCase()),
   );
+
+  if (localMatches.length > 0) {
+    // Use local matches if found
+    displayedResults.value = localMatches;
+    return;
+  }
+
+  // Set fetching state
+  isFetching.value = true;
+  isSearchError.value = false;
+
+  try {
+    // Search via API as fallback
+    const result = await PokemonService.instance.search(searchQuery.value);
+    displayedResults.value = [result];
+  } catch (e) {
+    isSearchError.value = true;
+    displayedResults.value = [];
+
+    if (e instanceof HttpError || e instanceof PokemonNotFoundError) {
+      console.error(e);
+    } else {
+      throw e;
+    }
+  }
+
+  // Reset fetching state
+  isFetching.value = false;
+}
+
+// Reset API result and error when query changes
+watch(searchQuery, () => {
+  searchResult.value = null;
+  isSearchError.value = false;
 });
 
 onMounted(async () => {
   await fetchPokemons();
+
+  // Initialize displayed results with local results
+  displayedResults.value = localResults.value;
 });
 </script>
 
@@ -70,7 +115,7 @@ onMounted(async () => {
       and it wasn't going to be me.
     </Text>
 
-    <SearchBar v-model="searchQuery" :disabled="isFetching" />
+    <SearchBar v-model="searchQuery" :disabled="isFetching" @submit="submit" />
 
     <TransitionGroup
       v-if="displayedResults.length > 0"
@@ -87,7 +132,10 @@ onMounted(async () => {
     </TransitionGroup>
 
     <Transition name="fade">
-      <Error v-if="displayedResults.length === 0 && !isFetching && searchQuery" :key="'error'">
+      <Error
+        v-if="(isSearchError || displayedResults.length === 0) && !isFetching && searchQuery"
+        :key="'error'"
+      >
         Failed to find a Pokémon for '{{ searchQuery }}'
       </Error>
     </Transition>
